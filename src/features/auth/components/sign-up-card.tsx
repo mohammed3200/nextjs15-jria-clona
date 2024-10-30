@@ -23,24 +23,25 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
-const formSchema = z.object({
-  name:z.string().trim().min(1,"Required"),
-  email: z.string().email(),
-  password: z.string().min(8, "Minimum of 8 characters required"),
-});
+import { registerSchema } from "../schemas";
+import { useRegister } from "../api/use-register";
 
 export const SignUpCard = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const { mutate } = useRegister();
+  const form = useForm<z.infer<typeof registerSchema>>({
+    resolver: zodResolver(registerSchema),
     defaultValues: {
       name: "",
       email: "",
       password: "",
     },
   });
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log({ values });
+  const onSubmit = (values: z.infer<typeof registerSchema>) => {
+    try {
+      mutate({ json: values });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -64,18 +65,14 @@ export const SignUpCard = () => {
       <CardContent className="p-7">
         <Form {...form}>
           <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-          <FormField
+            <FormField
               name="name"
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                    <FormLabel>Enter full name</FormLabel>
+                  <FormLabel>Enter full name</FormLabel>
                   <FormControl>
-                    <Input
-                      {...field}
-                      type="text"
-                      placeholder="Name"
-                    />
+                    <Input {...field} type="text" placeholder="Name" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -86,7 +83,7 @@ export const SignUpCard = () => {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                    <FormLabel>Email Address</FormLabel>
+                  <FormLabel>Email Address</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
@@ -103,13 +100,9 @@ export const SignUpCard = () => {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                    <FormLabel>Password</FormLabel>
+                  <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input
-                      {...field}
-                      type="password"
-                      placeholder="EXP123"
-                    />
+                    <Input {...field} type="password" placeholder="EXP123" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
