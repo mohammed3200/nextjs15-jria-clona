@@ -1,13 +1,14 @@
-"use client";
+import React from 'react'
+import { redirect } from 'next/navigation';
 
 import { SignUpCard } from '@/features/auth'
-import React from 'react'
+import { getCurrent } from '@/features/auth/actions';
 
-type SignUpPageProps = {
-    onSignUp: (email: string, password: string) => void
-}
 
-const SignUpPage = ({}: SignUpPageProps) => {
+const SignUpPage = async () => {
+  const user = await getCurrent();
+
+  if (user) redirect('/');
   return (
     <SignUpCard />
 
