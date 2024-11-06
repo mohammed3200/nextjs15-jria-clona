@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import { DottedSeparator } from './dotted-separator'
 import { Navigation } from './navigation'
+import { WorkspaceSwitcher } from './workspace-switcher'
 
 
 export const Sidebar = () => {
@@ -17,6 +18,8 @@ export const Sidebar = () => {
             />
             <p className="text-black lg:text-lg text-center font-black lg:-ml-4  ">Leadership Dashboard</p>
         </Link>
+        <DottedSeparator className="my-4" />
+        <WorkspaceSwitcher />
         <DottedSeparator className="my-4" />
         <Navigation />
     </aside>
