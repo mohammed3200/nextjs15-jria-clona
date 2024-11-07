@@ -2,7 +2,7 @@ import React from 'react'
 import { redirect } from 'next/navigation';
 
 import { SignUpCard } from '@/features/auth'
-import { getCurrent } from '@/features/auth/actions';
+import { getCurrent } from '@/features/auth/queries';
 
 
 const SignUpPage = async () => {
