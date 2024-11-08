@@ -43,7 +43,9 @@ export const EditWorkspaceForm = ({
 }: EditWorkspaceFormProps) => {
   const router = useRouter();
   const { mutate, isPending } = useUpdateWorkspace();
-  const { mutate: deleteWorkspace } = useDeleteWorkspace();
+  const { mutate: deleteWorkspace,
+    isPending: isDeletingWorkspace
+   } = useDeleteWorkspace();
 
   const [DeleteDialog, confirmDelete] = useConfirm(
     "Delete Workspace",
@@ -246,10 +248,10 @@ export const EditWorkspaceForm = ({
               size="sm"
               variant="destructive"
               type="button"
-              disabled={isPending}
+              disabled={isDeletingWorkspace}
               onClick={handleDelete}
             >
-              {isPending ? "Deleting..." : "Delete Workspace"}
+              {isDeletingWorkspace ? "Deleting..." : "Delete Workspace"}
             </Button>
           </div>
         </CardContent>
