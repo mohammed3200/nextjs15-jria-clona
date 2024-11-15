@@ -14,6 +14,7 @@ import { updateProjectSchema } from "../schemas";
 import { useConfirm } from "@/hooks/use-confirm";
 
 import { useUpdateProject } from "../api/use-update-project";
+import { useDeleteProject } from "../api/use-delete-project";
 
 
 import { cn } from "@/lib/utils";
@@ -44,15 +45,15 @@ export const EditProjectForm = ({
 }: EditProjectFormProps) => {
   const router = useRouter();
   const { mutate, isPending } = useUpdateProject();
-  // const { 
-  //     mutate: deleteWorkspace,
-  //      isPending: isDeletingWorkspace 
-  //     } = useDeleteWorkspace();
+  const { 
+      mutate: deleteProject,
+       isPending: isDeletingProject 
+      } = useDeleteProject();
 
 
   const [DeleteDialog, confirmDelete] = useConfirm(
-    "Delete Workspace",
-    "Are you sure you want to delete this workspace?",
+    "Delete Project",
+    "This action cannot be undone.",
     "destructive"
   );
 
@@ -72,16 +73,16 @@ export const EditProjectForm = ({
 
     if (!ok) return;
 
-    // deleteWorkspace(
-    //   {
-    //     param: { workspaceId: initialValues.$id },
-    //   },
-    //   {
-    //     onSuccess: () => {
-    //       router.push("/");
-    //     },
-    //   }
-    // );
+    deleteProject(
+      {
+        param: { projectId: initialValues.$id },
+      },
+      {
+        onSuccess: () => {
+          router.push(`/workspaces/${initialValues.workspaceId}`);
+        },
+      }
+    );
   };
 
 
@@ -258,10 +259,10 @@ export const EditProjectForm = ({
               size="sm"
               variant="destructive"
               type="button"
-              disabled={isPending}
+              disabled={isDeletingProject}
               onClick={handleDelete}
             >
-              {isPending ? "Deleting..." : "Delete Project"}
+              {isDeletingProject ? "Deleting..." : "Delete Project"}
             </Button>
           </div>
         </CardContent>
