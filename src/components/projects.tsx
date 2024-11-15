@@ -12,7 +12,7 @@ import { ProjectAvatar } from "@/features/projects/components/project-avatar";
 
 export const Projects = () => {
   const pathname = usePathname();
-  const { open } = useCreateProjectModal()
+  const { open } = useCreateProjectModal();
   const workspaceId = useWorkspaceId();
   const { data } = useGetProject({ workspaceId });
 
@@ -31,15 +31,17 @@ export const Projects = () => {
 
         return (
           <Link href={href} key={project.$id}>
-            <div className={cn(
-              "flex items-center gap-2.5 p-2.5 rounded-md hover:opacity-75 transition cursor-pointer text-neutral-500",
-              isActive && "bg-withe shadow-sm hover:opacity-100 text-primary"
-            )}>
+            <div
+              className={cn(
+                "flex items-center gap-2.5 p-2.5 rounded-md hover:opacity-75 transition cursor-pointer text-neutral-500",
+                isActive && "bg-withe shadow-sm hover:opacity-100 text-primary"
+              )}
+            >
               <ProjectAvatar image={project.imageUrl} name={project.name} />
               <span className="truncate">{project.name}</span>
             </div>
           </Link>
-        )
+        );
       })}
     </div>
   );
