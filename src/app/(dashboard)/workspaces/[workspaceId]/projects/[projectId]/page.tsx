@@ -7,6 +7,7 @@ import { getProject } from "@/features/projects/queries";
 import { Button } from "@/components/ui/button";
 import { ProjectAvatar } from "@/features/projects/components/project-avatar";
 import Link from "next/link";
+import { TaskViewSwitcher } from "@/features/tasks/components/task-view-switcher";
 
 interface ProjectPageProps {
   params: { projectId: string };
@@ -24,7 +25,7 @@ const ProjectIdPage = async ({ params }: ProjectPageProps) => {
 
   return (
     <div className="flex flex-col gap-y-4">
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-x-2">
           <ProjectAvatar
             name={initialValues.name}
@@ -42,6 +43,7 @@ const ProjectIdPage = async ({ params }: ProjectPageProps) => {
           </Button>
         </div>
       </div>
+      <TaskViewSwitcher />
     </div>
   );
 };
