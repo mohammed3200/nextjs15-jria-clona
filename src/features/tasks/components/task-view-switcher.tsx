@@ -7,6 +7,9 @@ import { DottedSeparator } from "@/components";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
 
+import { DataTable } from "./data-table";
+import { columns } from "./columns";
+
 import { useCreateTaskModal } from "../hooks/use-create-task-modal";
 import { useGetTasks } from "../api/use-get-tasks";
 import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
@@ -15,7 +18,7 @@ import { useTaskFilters } from "../hooks/use-task-filters";
 
 export const TaskViewSwitcher = () => {
   const [{ status, assigneeId, projectId, dueDate }, setFilters] =
-  useTaskFilters();
+    useTaskFilters();
 
   const [view, setView] = useQueryState("task-view", {
     defaultValue: "table",
@@ -61,12 +64,15 @@ export const TaskViewSwitcher = () => {
         <DottedSeparator className="my-4" />
         {isLoadingTasks ? (
           <div className="w-full border rounded-lg h-[200px] flex flex-col items-center justify-center">
-            <Loader className="size-6 animate-spin"/>
+            <Loader className="size-6 animate-spin" />
           </div>
         ) : (
           <>
             <TabsContent value="table" className="mt-0">
-              {JSON.stringify(tasks)}
+              <DataTable 
+              columns={columns} 
+              data={tasks?.documents ?? []} 
+              />
             </TabsContent>
             <TabsContent value="kanban" className="mt-0">
               {JSON.stringify(tasks)}
