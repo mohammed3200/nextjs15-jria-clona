@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { RiAddCircleFill } from "react-icons/ri";
 
-import { useGetProject } from "@/features/projects/api/use-get-projects";
+import { useGetProjects } from "@/features/projects/api/use-get-projects";
 import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 import { cn } from "@/lib/utils";
 import { useCreateProjectModal } from "@/features/projects/hooks/use-create-project-modal";
@@ -14,7 +14,7 @@ export const Projects = () => {
   const pathname = usePathname();
   const { open } = useCreateProjectModal();
   const workspaceId = useWorkspaceId();
-  const { data } = useGetProject({ workspaceId });
+  const { data } = useGetProjects({ workspaceId });
 
   return (
     <div className="flex flex-col gap-y-2">

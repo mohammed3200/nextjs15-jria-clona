@@ -2,7 +2,7 @@
 import { Loader } from "lucide-react";
 
 import { useGetMembers } from "@/features/members/api/use-get-members";
-import { useGetProject } from "@/features/projects/api/use-get-projects";
+import { useGetProjects } from "@/features/projects/api/use-get-projects";
 import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,7 +16,7 @@ export const CreateTaskFormWrapper = ({
   onCancel,
 }: CreateTaskFormWrapperProps) => {
   const workspaceId = useWorkspaceId();
-  const { data: projects, isLoading: isLoadingProjects } = useGetProject({
+  const { data: projects, isLoading: isLoadingProjects } = useGetProjects({
     workspaceId,
   });
   const { data: members, isLoading: isLoadingMembers } = useGetMembers({
@@ -40,17 +40,7 @@ export const CreateTaskFormWrapper = ({
     return (
       <Card className="w-full h-[714px] border-none shadow-none">
         <CardContent className="flex items-center justify-center h-full">
-        <div className="container">
-        <div className="cube">
-          <div className="cube__inner"></div>
-        </div>
-        <div className="cube">
-          <div className="cube__inner"></div>
-        </div>
-        <div className="cube">
-          <div className="cube__inner"></div>
-        </div>
-      </div>
+        <Loader className="size-6 animate-spin"/>
         </CardContent>
       </Card>
     );
