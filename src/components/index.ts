@@ -5,4 +5,5 @@ export * from "./navigation";
 export * from "./navbar";
 export * from "./mobile-sidebar";
 export * from "./workspace-switcher";
-export * from "./projects"
+export * from "./projects";
+export * from "./date-picker";
