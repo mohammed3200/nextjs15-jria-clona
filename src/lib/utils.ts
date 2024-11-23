@@ -6,7 +6,8 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function generateInviteCode(length: number) {
-  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let code = "";
 
   for (let i = 0; i < length; i++) {
@@ -15,5 +16,10 @@ export function generateInviteCode(length: number) {
   }
 
   return code;
-
 }
+
+export const snakeCaseToTitleCase = (str: string) =>
+  str
+    .toLocaleLowerCase()
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());

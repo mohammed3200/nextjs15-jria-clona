@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { client } from "@/lib/rpc";
 import { TaskStatus } from "../types";
 
-interface UseGetTaskProps {
+interface UseGetTasksProps {
   workspaceId: string;
   projectId?: string | null;
   status?: TaskStatus | null;
@@ -19,7 +19,7 @@ export const useGetTasks = ({
   search,
   assigneeId,
   dueDate,
-}: UseGetTaskProps) => {
+}: UseGetTasksProps) => {
   const query = useQuery({
     queryKey: [
       "tasks",
