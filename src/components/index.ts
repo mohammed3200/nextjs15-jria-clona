@@ -11,6 +11,3 @@ export * from "./workspace-switcher";
 export * from "./date-picker";
 
 export * from "./projects";
-
-export * from "./page-error"
-export * from "./page-loader"
