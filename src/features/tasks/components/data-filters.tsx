@@ -98,6 +98,7 @@ export const DataFilters = ({
           ))}
         </SelectContent>
       </Select>
+      {!hideProjectFilter && (
       <Select
         defaultValue={projectId ?? undefined}
         onValueChange={(value) => onProjectChange(value)}
@@ -117,7 +118,7 @@ export const DataFilters = ({
             </SelectItem>
           ))}
         </SelectContent>
-      </Select>
+      </Select>)}
       <DatePicker
         placeholder="Due Date"
         className="w-full lg:w-auto"
