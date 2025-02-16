@@ -93,12 +93,7 @@ export const EditProjectForm = ({
       image: values.image instanceof File ? values.image : "",
     };
     mutate(
-      { form: finalValues, param: { projectId: initialValues.$id } },
-      {
-        onSuccess: () => {
-          form.reset();
-        },
-      }
+      { form: finalValues, param: { projectId: initialValues.$id } }
     );
   };
 
