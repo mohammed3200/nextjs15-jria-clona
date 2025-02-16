@@ -6,7 +6,7 @@ import { zValidator } from "@hono/zod-validator";
 import { sessionMiddleware } from "@/lib/session-middleware";
 
 import { getMember } from "@/features/members/utils";
-import { DATABASE_ID, IMAGES_BUCKET_ID, PROJECTS_ID, TASKS_ID } from "@/config";
+import { DATABASE_ID, IMAGES_BUCKET_ID, PROJECTS_ID } from "@/config";
 import { createProjectSchema, updateProjectSchema } from "../schemas";
 
 import { Project } from "../types";
@@ -99,7 +99,7 @@ const app = new Hono()
 
     const project = await databases.getDocument<Project>(
       DATABASE_ID,
-      PROJECTS_ID,
+      PROJECTS_ID, // fix
       projectId
     );
 
