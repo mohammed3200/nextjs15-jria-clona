@@ -40,7 +40,7 @@ export const WorkspaceIdClient = () => {
 
     const isLoading = isLoadingAnalytics || isLoadingTasks || isLoadingProjects || isLoadingMembers;
 
-    if (!isLoading) return <PageLoader />
+    if (isLoading) return <PageLoader />
 
     if (!analytics || !tasks || !projects || !members) return <PageError message="Failed to load workspace data" />
     return (
@@ -104,6 +104,7 @@ export const TaskList = ({ data, total }: TaskListProps) => {
                 </ul>
                 <Button variant="muted" className="mt-4 w-full" asChild>
                     <Link href={`/workspaces/${workspaceId}/tasks`}>
+                    Show All
                     </Link>
                 </Button>
             </div>
@@ -192,7 +193,7 @@ export const MembersList = ({ data, total }: MembersListProps) => {
                                         className="size-12"
                                         name={member.name}
                                     />
-                                    <div className="flex flex-col items-center overflow-hidden">
+                                    <div className="flex flex-col items-center overflow-hidden px-2">
                                         <p className="text-lg font-medium line-clamp-1">
                                             {member.name}
                                         </p>
