@@ -23,6 +23,10 @@ export const TaskDescription = ({ task }: TaskDescriptionProps) => {
         mutate({
             json: { description: value },
             param: { taskId: task.$id }
+        }, {
+            onSuccess: () => {
+                setIsEditing(false)
+            }
         });
     };
 
@@ -32,9 +36,9 @@ export const TaskDescription = ({ task }: TaskDescriptionProps) => {
                 <p className="text-lg font-semibold">Overview</p>
                 <Button onClick={() => setIsEditing((prev) => !prev)} size="sm" variant="secondary">
                     {isEditing ? (
-                        <XIcon className="size-4 mr-2"/>
+                        <XIcon className="size-4 mr-2" />
                     ) : (
-                    <PencilIcon className="size-4 mr-2" />
+                        <PencilIcon className="size-4 mr-2" />
                     )}
                     {isEditing ? "Cancel" : "Edit"}
                 </Button>
@@ -43,30 +47,30 @@ export const TaskDescription = ({ task }: TaskDescriptionProps) => {
             {isEditing ? (
                 <div className="flex flex-col gap-y-4">
                     <Textarea
-                    placeholder="Add a description..."
-                    value={value}
-                    rows={4}
-                    onChange={(e) => setValue(e.target.value)}
-                    disabled={isPending}
+                        placeholder="Add a description..."
+                        value={value}
+                        rows={4}
+                        onChange={(e) => setValue(e.target.value)}
+                        disabled={isPending}
                     />
                     <Button
-                    className="w-fit ml-auto"
-                    onClick={handleSave}
-                    disabled={isPending}
+                        className="w-fit ml-auto"
+                        onClick={handleSave}
+                        disabled={isPending}
                     >
                         {isPending ? "Saving..." : "Save Changes"}
                     </Button>
                 </div>
             ) : (
-            <div className="flex flex-col gap-y-4">
-                <div>
-                    {task.description || (
-                        <span className="text-muted-foreground">
-                            No description set
-                        </span>
-                    )}
+                <div className="flex flex-col gap-y-4">
+                    <div>
+                        {task.description || (
+                            <span className="text-muted-foreground">
+                                No description set
+                            </span>
+                        )}
+                    </div>
                 </div>
-            </div>
             )}
         </div>
     );
