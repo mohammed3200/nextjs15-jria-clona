@@ -10,11 +10,11 @@ import { EditProjectForm } from "@/features/projects/components/edit-project-for
 
 export const ProjectIdSettingsClient = () => {
     const projectId = useProjectId();
-    const { data: initialValues,isLoading } = useGetProject({ projectId});
+    const { data: initialValues, isLoading } = useGetProject({ projectId });
 
-    if(isLoading) return <PageLoader />;
+    if (isLoading) return <PageLoader />;
 
-    if(!initialValues) return <PageError message="Project not found" />;
+    if (!initialValues) return <PageError message="Project not found" />;
     return (
         <div className='w-full lg:max-w-xl'>
             <EditProjectForm initialValues={initialValues} />
