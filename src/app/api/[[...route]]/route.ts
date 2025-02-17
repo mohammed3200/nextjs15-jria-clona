@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Hono } from "hono";
 import { handle } from "hono/vercel";
 
@@ -10,6 +9,7 @@ import tasks from "@/features/tasks/server/route";
 
 const app = new Hono().basePath("/api");
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const routes = app
     .route("/auth", auth)
     .route("/members", members)
