@@ -4,7 +4,7 @@ import loading from "react-useanimations/lib/loading"
 
 const PageLoader = () => {
   return (
-    <div className='flex h-full items-center justify-center'>
+    <div className='flex items-center justify-center h-screen'>
       <UseAnimations size={56}  animation={loading} />
     </div>
   );
