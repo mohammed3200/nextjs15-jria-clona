@@ -3,7 +3,6 @@
 import { z } from "zod";
 import { useRef } from "react";
 import Image from "next/image";
-// import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -254,7 +253,7 @@ export const EditProjectForm = ({
               size="sm"
               variant="destructive"
               type="button"
-              disabled={isDeletingProject}
+              disabled={isPending || isDeletingProject}
               onClick={handleDelete}
             >
               {isDeletingProject ? "Deleting..." : "Delete Project"}

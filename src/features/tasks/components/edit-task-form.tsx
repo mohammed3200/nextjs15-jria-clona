@@ -6,8 +6,6 @@ import { useForm } from "react-hook-form";
 
 import { createTaskSchema } from "../schemas";
 
-import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
-
 import { MemberAvatar } from "@/features/members/components/member-avatar";
 import { ProjectAvatar } from "@/features/projects/components/project-avatar";
 
@@ -48,7 +46,6 @@ export const EditTaskForm = ({
   memberOptions,
   initialValues,
 }: EditTaskFormProps) => {
-  const workspaceId = useWorkspaceId();
   const { mutate, isPending } = useUpdateTask();
 
   const form = useForm<z.infer<typeof createTaskSchema>>({
