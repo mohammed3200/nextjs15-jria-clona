@@ -30,9 +30,9 @@ export const Analytics = ({ data }: ProjectAnalyticsResponseType) => {
                 <div className="flex items-center flex-1">
                     <AnalyticsCard
                         title="Completed Tasks"
-                        value={data.completedTaskCount}
-                        variant={data.completedTaskDifference > 0 ? "up" : "down"}
-                        increaseValue={data.completedTaskDifference}
+                        value={data.completeTaskCount}
+                        variant={data.completeTaskDifference > 0 ? "up" : "down"}
+                        increaseValue={data.completeTaskDifference}
                     />
                 <DottedSeparator direction="vertical"/>
                 </div>
