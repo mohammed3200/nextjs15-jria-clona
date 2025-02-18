@@ -1,9 +1,9 @@
-// import { z } from "zod"
 import { Hono } from "hono";
+import { ID } from "node-appwrite";
+
 import { setCookie, deleteCookie } from "hono/cookie";
 import { zValidator } from "@hono/zod-validator";
 
-import { ID } from "node-appwrite";
 
 import { loginSchema, registerSchema } from "../schemas";
 
