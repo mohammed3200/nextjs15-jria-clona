@@ -1,8 +1,16 @@
 "use client";
 
-import React from "react";
+import { z } from "zod";
+import Link from "next/link";
+
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+
+import { signUpWithGithub, signUpWithGoogle } from "@/lib/oauth";
+
 import {
   Card,
   CardContent,
@@ -13,10 +21,6 @@ import {
 import { DottedSeparator } from "@/components";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
@@ -25,6 +29,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+
 import { registerSchema } from "../schemas";
 import { useRegister } from "../api/use-register";
 
@@ -121,6 +126,7 @@ export const SignUpCard = () => {
       </div>
       <CardContent className="p-7 flex flex-col gap-y-4">
         <Button
+        onClick={() => signUpWithGoogle()}
           disabled={isPending}
           variant="secondary"
           size="lg"
@@ -130,6 +136,7 @@ export const SignUpCard = () => {
           Login with Google
         </Button>
         <Button
+        onClick={() => signUpWithGithub()}
           disabled={isPending}
           variant="secondary"
           size="lg"
