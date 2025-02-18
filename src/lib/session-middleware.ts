@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// import "server-only";
-
 import {
   Account,
   Client,

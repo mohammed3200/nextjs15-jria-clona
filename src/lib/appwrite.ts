@@ -1,9 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// import "server-only"
-
-import { AUTH_COOKIE } from "@/features/auth/constants";
 import { cookies } from "next/headers";
-import { Client, Account, Storage, Users, Databases } from "node-appwrite";
+import { AUTH_COOKIE } from "@/features/auth/constants";
+import { Client, Account, Users, Databases } from "node-appwrite";
 
 export async function createAdminClient() {
   const client = new Client()
