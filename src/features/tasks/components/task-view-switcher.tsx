@@ -32,7 +32,7 @@ interface TaskViewSwitcherProps {
 }
 
 export const TaskViewSwitcher = ({ hideProjectFilter }: TaskViewSwitcherProps) => {
-  const [{ status, assigneeId, projectId, dueDate }, setFilters] =
+  const [{ status, assigneeId, projectId, dueDate }] =
     useTaskFilters();
 
   const [view, setView] = useQueryState("task-view", {
